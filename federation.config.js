@@ -3,7 +3,7 @@ const { withNativeFederation, shareAll } = require('@angular-architects/native-f
 module.exports = withNativeFederation({
 
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    // ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 
   skip: [
@@ -12,6 +12,10 @@ module.exports = withNativeFederation({
     'rxjs/testing',
     'rxjs/webSocket',
     // Add further packages you don't need at runtime
+  ],
+  skipSharingNextInternals: [
+    '@primeng/themes/types',
+    '@primeng/core/primeng-chart'
   ]
 
   // Please read our FAQ about sharing libs:

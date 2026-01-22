@@ -1,0 +1,362 @@
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Main Toolbar
+.main-toolbar {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  color: #1a1a1a;
+  padding: 0 !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+
+  &.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 24px;
+}
+
+// Logo Section
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: fit-content;
+
+  .menu-toggle {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+    }
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .brand-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: #4ecdc4;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+  }
+}
+
+// Center Navigation
+.nav-center {
+  display: flex;
+  gap: 8px;
+  margin-left: 40px;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: rgba(78, 205, 196, 0.1);
+      color: #4ecdc4;
+    }
+  }
+}
+
+// Spacer
+.spacer {
+  flex: 1;
+}
+
+// Toolbar Actions
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+
+    .search-container {
+      display: none;
+    }
+  }
+}
+
+// Search Container
+.search-container {
+  .search-field {
+    width: 240px;
+    height: 36px;
+
+    ::ng-deep {
+      .mat-mdc-text-field-wrapper {
+        padding-bottom: 0;
+      }
+
+      .mdc-text-field {
+        height: 36px;
+      }
+
+      .mdc-text-field__input {
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+
+      .mat-mdc-form-field-focus-overlay {
+        background: transparent;
+      }
+    }
+  }
+
+  .search-input {
+    &::placeholder {
+      color: #999;
+    }
+  }
+}
+
+// Icon Buttons
+.icon-btn {
+  color: inherit !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #4ecdc4 !important;
+  }
+}
+
+// Profile Button
+.profile-btn {
+  padding: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #4ecdc4;
+    transition: all 0.3s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      border-color: #45b7d1;
+    }
+  }
+}
+
+// Mobile Menu
+.mobile-menu {
+  display: none;
+  padding: 12px 0;
+  background: white;
+  border-bottom: 1px solid #eee;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    color: inherit;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: #4ecdc4;
+    }
+
+    &:hover {
+      background: rgba(78, 205, 196, 0.1);
+      border-left-color: #4ecdc4;
+    }
+  }
+}
+
+// Notifications Menu
+.notifications-menu {
+  min-width: 320px !important;
+
+  ::ng-deep {
+    .mat-mdc-menu-content {
+      padding: 0 !important;
+    }
+  }
+
+  .notification-header {
+    padding: 16px 24px !important;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    cursor: default !important;
+
+    &:hover {
+      background: transparent !important;
+    }
+
+    button {
+      margin: 0 -8px;
+    }
+  }
+
+  .notification-item {
+    padding: 12px 24px !important;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    mat-icon {
+      color: #4ecdc4;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    span {
+      font-size: 13px;
+      color: #666;
+    }
+  }
+
+  .view-all {
+    padding: 12px 24px !important;
+    justify-content: center;
+    text-align: center;
+    color: #4ecdc4 !important;
+    font-weight: 500;
+  }
+}
+
+// Profile Menu
+.profile-menu {
+  min-width: 280px !important;
+
+  ::ng-deep {
+    .mat-mdc-menu-content {
+      padding: 0 !important;
+    }
+  }
+
+  .profile-header {
+    padding: 20px 24px !important;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #eee;
+    cursor: default !important;
+
+    &:hover {
+      background: transparent !important;
+    }
+
+    .avatar-large {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #4ecdc4;
+    }
+
+    .profile-info {
+      flex: 1;
+
+      .profile-name {
+        font-weight: 600;
+        color: #1a1a1a;
+        font-size: 14px;
+      }
+
+      .profile-email {
+        font-size: 12px;
+        color: #999;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  button[mat-menu-item] {
+    padding: 12px 24px !important;
+    font-size: 13px;
+
+    mat-icon {
+      margin-right: 12px;
+      color: #4ecdc4;
+    }
+  }
+}
+
+// Material Badge Customization
+::ng-deep {
+  .mat-badge-content {
+    background-color: #ff6b6b !important;
+    font-size: 10px !important;
+  }
+
+  .mdc-linear-progress {
+    height: 3px;
+  }
+}

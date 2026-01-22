@@ -1,0 +1,121 @@
+<div class="home-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Home</h1>
+      <p class="hero-subtitle">
+        Empower your business with real-time analytics, insights, and comprehensive
+        management tools
+      </p>
+      <div class="hero-buttons">
+        <button mat-raised-button color="primary" class="btn-primary">
+          <mat-icon>play_arrow</mat-icon>
+          Get Started Now
+        </button>
+        <button mat-stroked-button color="primary" class="btn-secondary">
+          <mat-icon>info</mat-icon>
+          Learn More
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card-1">
+        <mat-icon>trending_up</mat-icon>
+        <span>+45%</span>
+      </div>
+      <div class="floating-card card-2">
+        <mat-icon>check_circle</mat-icon>
+        <span>Active</span>
+      </div>
+      <div class="floating-card card-3">
+        <mat-icon>people</mat-icon>
+        <span>10K+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="section-header">
+      <h2>Powerful Features</h2>
+      <p>Everything you need to succeed in one platform</p>
+    </div>
+    <div class="features-grid">
+      <mat-card class="feature-card" *ngFor="let feature of features">
+        <mat-card-content>
+          <div class="feature-icon" [style.background-color]="feature.color">
+            <mat-icon>{{ feature.icon }}</mat-icon>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section" id="stats">
+    <div class="stats-content">
+      <div class="stats-text">
+        <h2>Trusted by Thousands</h2>
+        <p>
+          Join thousands of companies that have transformed their business with our platform.
+          Experience the difference quality and reliability can make.
+        </p>
+        <button mat-raised-button color="primary">
+          <mat-icon>arrow_forward</mat-icon>
+          Start Your Free Trial
+        </button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item" *ngFor="let stat of stats">
+          <div class="stat-number">{{ stat.number }}<span>{{ stat.suffix }}</span></div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-header">
+      <h2>What Our Users Say</h2>
+      <p>Real feedback from real customers</p>
+    </div>
+    <div class="testimonials-grid">
+      <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <mat-card-content>
+          <div class="rating">
+            <mat-icon *ngFor="let i of [].constructor(testimonial.rating)" class="star">
+              star
+            </mat-icon>
+          </div>
+          <p class="testimonial-content">{{ testimonial.content }}</p>
+          <div class="testimonial-author">
+            <img [src]="testimonial.avatar" [alt]="testimonial.name" class="avatar" />
+            <div class="author-info">
+              <div class="author-name">{{ testimonial.name }}</div>
+              <div class="author-role">{{ testimonial.role }}</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Transform Your Business?</h2>
+      <p>Start your journey to success with our comprehensive platform</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" class="btn-large">
+          Create Free Account
+        </button>
+        <button mat-stroked-button color="primary" class="btn-large">
+          Schedule Demo
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

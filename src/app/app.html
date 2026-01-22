@@ -1,9 +1,14 @@
-<app-header/>
+<div class="app-layout">
+  <!-- Header -->
+  <app-header class="layout-header"></app-header>
 
+  <!-- Main Content Area -->
+  <main class="layout-main">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 
-<div class="">
-  <router-outlet />
+  <!-- Footer -->
+  <app-footer class="layout-footer"></app-footer>
 </div>
-
-
-<app-footer/>

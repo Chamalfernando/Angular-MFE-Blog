@@ -2,14 +2,15 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: 'home',
+        path: '',
+        loadComponent:() => import('./pages/home/home').then(m => m.Home),
+    },
+    {
+        path: 'dashboard',
         loadComponent:() => import('./pages/dashboard/dashboard').then(m => m.Dashboard),
     },
     {
-        path: 'page',
-        loadChildren: () => import('./pages/page.routes').then(m => m.pgroutes),
-    },
-    {
-        path: 'mfe1',
+        path: 'micro',
+        loadComponent: () => import('./pages/remote/remote').then(m => m.Remote),
     }
 ];

@@ -1,1 +1,128 @@
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<header class="header-wrapper">
+  <!-- Main Toolbar -->
+  <mat-toolbar class="main-toolbar" [class.dark-mode]="isDarkMode()">
+    <div class="toolbar-content">
+      <!-- Logo -->
+      <div class="logo-section">
+        <button mat-icon-button class="menu-toggle" (click)="toggleMobileMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div class="brand">
+          <mat-icon class="brand-icon">dashboard</mat-icon>
+          <span class="brand-text">Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Center Navigation (Desktop) -->
+      <nav class="nav-center">
+        <a
+          *ngFor="let link of navLinks"
+          [href]="link.route"
+          class="nav-link"
+        >
+          <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+          <span>{{ link.label }}</span>
+        </a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="spacer"></div>
+      <div class="toolbar-actions">
+        <!-- Search Bar -->
+        <div class="search-container">
+          <mat-form-field class="search-field">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search..." class="search-input" />
+          </mat-form-field>
+        </div>
+
+        <!-- Notifications -->
+        <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="icon-btn">
+          <mat-icon [matBadge]="notificationCount" matBadgeColor="warn">
+            notifications
+          </mat-icon>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button
+          mat-icon-button
+          (click)="toggleDarkMode()"
+          class="icon-btn"
+          [title]="isDarkMode() ? 'Light Mode' : 'Dark Mode'"
+        >
+          <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+
+        <!-- User Profile Menu -->
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-btn">
+          <div class="user-avatar">
+            <img [src]="userProfile.avatar" [alt]="userProfile.name" />
+          </div>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMobileOpen()" class="mobile-menu">
+    <a *ngFor="let link of navLinks" [href]="link.route" class="mobile-nav-link">
+      <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+      <span>{{ link.label }}</span>
+    </a>
+  </div>
+</header>
+
+<!-- Notifications Menu -->
+<mat-menu #notificationsMenu="matMenu" class="notifications-menu">
+  <div mat-menu-item class="notification-header">
+    <span>Notifications</span>
+    <button mat-icon-button matMenuClose>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <button mat-menu-item class="notification-item">
+    <mat-icon>info</mat-icon>
+    <span>New user registered</span>
+  </button>
+  <button mat-menu-item class="notification-item">
+    <mat-icon>shopping_cart</mat-icon>
+    <span>New order received</span>
+  </button>
+  <button mat-menu-item class="notification-item">
+    <mat-icon>warning</mat-icon>
+    <span>System alert</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item class="view-all">
+    <span>View All Notifications</span>
+  </button>
+</mat-menu>
+
+<!-- Profile Menu -->
+<mat-menu #profileMenu="matMenu" class="profile-menu">
+  <div mat-menu-item class="profile-header">
+    <img [src]="userProfile.avatar" [alt]="userProfile.name" class="avatar-large" />
+    <div class="profile-info">
+      <div class="profile-name">{{ userProfile.name }}</div>
+      <div class="profile-email">{{ userProfile.email }}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon>person</mat-icon>
+    <span>My Profile</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>help</mat-icon>
+    <span>Help & Support</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

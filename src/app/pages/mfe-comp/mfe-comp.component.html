@@ -1,0 +1,276 @@
+<div class="mfe-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1>PrimeNG Component Demo</h1>
+    <p>Showcase of various PrimeNG components for Micro Frontend</p>
+  </div>
+
+  <!-- Toast Notifications -->
+  <p-toast></p-toast>
+
+  <!-- Welcome Card -->
+  <p-card class="welcome-card">
+    <ng-template pTemplate="header">
+      <div class="card-header">
+        <h2>Welcome to PrimeNG Demo</h2>
+      </div>
+    </ng-template>
+    <p>
+      This component demonstrates a variety of PrimeNG components including data tables, charts, forms, and more.
+      Perfect for showcasing UI capabilities in your Micro Frontend Architecture.
+    </p>
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Learn More"
+        class="p-button-rounded"
+        icon="pi pi-arrow-right"
+        (click)="onViewDetails({id: 0, name: 'Demo', category: '', price: 0, rating: 0, status: 'Available', image: ''})">
+      </button>
+    </ng-template>
+  </p-card>
+
+  <p-divider></p-divider>
+
+  <!-- Search and Filter Section -->
+  <div class="search-filter-section">
+    <h2>Product Catalog</h2>
+    
+    <div class="filter-controls">
+      <div class="search-input">
+        <p-inputGroup>
+          <span pInputGroupAddon>
+            <i class="pi pi-search"></i>
+          </span>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search products..."
+            [(ngModel)]="searchValue"
+            (input)="getFilteredProducts()">
+        </p-inputGroup>
+      </div>
+
+      <div class="category-dropdown">
+        <p-dropdown
+          [options]="categories"
+          [(ngModel)]="selectedCategory"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select Category"
+          (onChange)="getFilteredProducts()">
+        </p-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Table Section -->
+  <p-card>
+    <ng-template pTemplate="header">
+      <div class="table-header">
+        <h3>Product Listing</h3>
+        <span class="product-count">{{ getFilteredProducts().length }} products found</span>
+      </div>
+    </ng-template>
+
+    <p-table
+      [value]="getFilteredProducts()"
+      [rows]="rows"
+      [paginator]="true"
+      [globalFilterFields]="['name', 'category', 'status']"
+      responsiveLayout="scroll"
+      styleClass="p-datatable-striped">
+      
+      <!-- Header Row -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 8%"></th>
+          <th style="width: 25%">Product Name</th>
+          <th style="width: 15%">Category</th>
+          <th style="width: 12%">Price</th>
+          <th style="width: 12%">Rating</th>
+          <th style="width: 15%">Status</th>
+          <th style="width: 13%">Actions</th>
+        </tr>
+      </ng-template>
+
+      <!-- Body Rows -->
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>
+            <p-avatar
+              [image]="product.image"
+              shape="circle"
+              size="large">
+            </p-avatar>
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <strong>${{ product.price }}</strong>
+          </td>
+          <td>
+            <p-rating
+              [(ngModel)]="product.rating"
+              [readonly]="true"
+              iconCancelClass="pi pi-times">
+            </p-rating>
+          </td>
+          <td>
+            <p-tag
+              [value]="product.status"
+              [severity]="getStatusSeverity(product.status)">
+            </p-tag>
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-eye"
+              class="p-button-rounded p-button-info p-button-sm p-mr-2"
+              (click)="onViewDetails(product)"
+              pTooltip="View Details"
+              tooltipPosition="top">
+            </button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-shopping-cart"
+              class="p-button-rounded p-button-success p-button-sm"
+              (click)="onAddToCart(product)"
+              pTooltip="Add to Cart"
+              tooltipPosition="top">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <!-- Empty Message -->
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7" class="text-center p-4">
+            <p>No products found matching your criteria.</p>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+
+  <p-divider></p-divider>
+
+  <!-- Statistics Section -->
+  <div class="charts-section">
+    <h2>Sales Analytics & Inventory Status</h2>
+
+    <div class="charts-grid">
+      <div class="stats-card">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="stat-header">
+              <i class="pi pi-shopping-bag"></i>
+              <h4>Total Products</h4>
+            </div>
+          </ng-template>
+          <div class="stat-value">{{ products.length }}</div>
+          <p-progressBar [value]="85" [showValue]="false"></p-progressBar>
+          <small class="stat-label">85% of inventory</small>
+        </p-card>
+      </div>
+
+      <div class="stats-card">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="stat-header">
+              <i class="pi pi-check"></i>
+              <h4>Available Items</h4>
+            </div>
+          </ng-template>
+          <div class="stat-value">6</div>
+          <p-progressBar [value]="75" [showValue]="false"></p-progressBar>
+          <small class="stat-label">75% of stock</small>
+        </p-card>
+      </div>
+
+      <div class="stats-card">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="stat-header">
+              <i class="pi pi-exclamation-circle"></i>
+              <h4>Low Stock</h4>
+            </div>
+          </ng-template>
+          <div class="stat-value">1</div>
+          <p-progressBar [value]="25" severity="warning" [showValue]="false"></p-progressBar>
+          <small class="stat-label">12.5% of inventory</small>
+        </p-card>
+      </div>
+
+      <div class="stats-card">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="stat-header">
+              <i class="pi pi-times"></i>
+              <h4>Out of Stock</h4>
+            </div>
+          </ng-template>
+          <div class="stat-value">1</div>
+          <p-progressBar [value]="12" severity="danger" [showValue]="false"></p-progressBar>
+          <small class="stat-label">12.5% out of stock</small>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <!-- Expandable Panel Section -->
+  <div class="panel-section">
+    <h2>Additional Features</h2>
+
+    <p-panel header="Component Information" [toggleable]="true" [collapsed]="false">
+      <div class="panel-content">
+        <h4>This demo showcases:</h4>
+        <ul>
+          <li><strong>Data Tables:</strong> Responsive product listing with pagination</li>
+          <li><strong>Forms:</strong> Search input, dropdown filters, and input groups</li>
+          <li><strong>Statistics:</strong> Progress bars with different severity levels</li>
+          <li><strong>Data Display:</strong> Tags, avatars, and ratings</li>
+          <li><strong>Buttons:</strong> Various button styles with icons and ripple effects</li>
+          <li><strong>Cards:</strong> Structured content containers</li>
+          <li><strong>Notifications:</strong> Toast messages for user feedback</li>
+          <li><strong>Layout:</strong> Dividers and responsive grid layouts</li>
+        </ul>
+      </div>
+    </p-panel>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-section">
+    <p-divider></p-divider>
+    <div class="footer-content">
+      <p>&copy; 2024 PrimeNG MFE Demo. Built with Angular & PrimeNG.</p>
+      <div class="footer-buttons">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="GitHub"
+          icon="pi pi-github"
+          class="p-button-text p-button-lg">
+        </button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Documentation"
+          icon="pi pi-book"
+          class="p-button-text p-button-lg">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

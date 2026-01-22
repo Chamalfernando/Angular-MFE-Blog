@@ -10,11 +10,13 @@ import { createApplication } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { appConfig } from './app/app.config';
 import DashboardComponent from './app/shared/dashboard/dashboard.component';
+import MfeCompComponent from './app/pages/mfe-comp/mfe-comp.component';
 
 // Import all exposed components
 
 // Configuration for all exposed components
 const EXPOSED_COMPONENTS = [
+  {component: MfeCompComponent, selector: 'app-mfe-comp'},
   {component: DashboardComponent, selector: 'app-dashboard'},
 ];
 
@@ -26,7 +28,7 @@ export async function initElements() {
     const allRegistered = EXPOSED_COMPONENTS.every(item => 
       customElements.get(item.selector)
     );
-    
+    // alert(allRegistered)
     if (allRegistered) {
       console.log('All mfe19 elements already registered');
       return;

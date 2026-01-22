@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export default class MfeDemoComponent {
 
   // Input parameters for remote-workbench. You can either use and include this as a separate UI Component inside your component.
-  @Input() remotePath: string = '';
+  @Input() remotePath: string = "http://localhost:8000/remoteEntry.json";
   @Input() componentName: string = "";
   @Input() customElementTag: string = "";
   @Input() inputData?: any;
@@ -19,7 +19,7 @@ export default class MfeDemoComponent {
   // Output event emitter
   @Output() viewContainerRefReady: EventEmitter<ComponentRef<any>> = new EventEmitter<ComponentRef<any>>();
   
-  @ViewChild('remoteworkbench', { static: true }) containerRef!: ElementRef;
+  @ViewChild('remoteMFE', { static: true }) containerRef!: ElementRef;
 
   private componentRef: any = null;
   private element: any = null;
@@ -55,7 +55,7 @@ export default class MfeDemoComponent {
 
   private async loadRemoteComponent() {
     try {
-      console.log(`🔄 Loading remote WorkbenchComponent from ${this.remotePath}`);
+      console.log(`🔄 Loading remote  from ${this.remotePath}`);
       
       // Load the remote module
       const module = await loadRemoteModule({

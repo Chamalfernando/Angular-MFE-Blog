@@ -1,0 +1,436 @@
+.mfe-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .header-section {
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  .welcome-card {
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+
+    .card-header {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      padding: 1.5rem;
+      color: white;
+
+      h2 {
+        margin: 0;
+        font-size: 1.8rem;
+      }
+    }
+
+    ::ng-deep {
+      .p-card-body {
+        padding: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .p-card-footer {
+        padding: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+        text-align: right;
+      }
+    }
+  }
+
+  .search-filter-section {
+    margin: 2rem 0;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+
+    .filter-controls {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 1rem;
+      margin-top: 1.5rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      .search-input,
+      .category-dropdown {
+        display: flex;
+      }
+
+      .category-dropdown {
+        ::ng-deep {
+          .p-dropdown {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    margin: -1rem -1rem 1rem -1rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .product-count {
+      background: rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  }
+
+  ::ng-deep {
+    .p-datatable {
+      .p-datatable-thead > tr > th {
+        background: #f5f5f5;
+        color: #333;
+        font-weight: 600;
+        border-bottom: 2px solid #e0e0e0;
+        padding: 1rem;
+      }
+
+      .p-datatable-tbody > tr {
+        border-bottom: 1px solid #e0e0e0;
+
+        &:hover {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          padding: 1rem;
+          vertical-align: middle;
+        }
+      }
+
+      .p-paginator {
+        background: #f5f5f5;
+        border-top: 1px solid #e0e0e0;
+        padding: 1rem;
+      }
+    }
+
+    .p-rating {
+      gap: 0.5rem;
+
+      .p-icon {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .charts-section {
+    margin: 2rem 0;
+
+    h2 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-card {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+
+        ::ng-deep {
+          .p-card {
+            height: 100%;
+          }
+
+          .p-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            color: white;
+            margin: 0;
+          }
+        }
+
+        .stat-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          i {
+            font-size: 1.8rem;
+            opacity: 0.8;
+          }
+
+          h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+          }
+        }
+
+        .stat-value {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #667eea;
+          margin: 1rem 0;
+        }
+
+        .stat-label {
+          color: #666;
+          font-size: 0.85rem;
+          display: block;
+          margin-top: 0.75rem;
+        }
+
+        ::ng-deep {
+          .p-progressbar {
+            height: 8px;
+            margin: 1rem 0;
+          }
+        }
+      }
+    }
+  }
+
+  .panel-section {
+    margin: 2rem 0;
+
+    h2 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ::ng-deep {
+      .p-panel {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        border: none;
+
+        .p-panel-header {
+          background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+          border: none;
+          padding: 1.5rem;
+
+          .p-panel-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+          }
+
+          .p-panel-toggle-button {
+            color: white;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.2);
+            }
+          }
+        }
+
+        .p-panel-content {
+          padding: 1.5rem;
+          background: white;
+        }
+      }
+    }
+
+    .panel-content {
+      h4 {
+        color: #333;
+        margin-top: 0;
+        font-size: 1.1rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: 0.75rem 0;
+          color: #555;
+          border-bottom: 1px solid #f0f0f0;
+          line-height: 1.6;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          strong {
+            color: #667eea;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-section {
+    margin-top: 3rem;
+
+    .footer-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+      p {
+        color: #666;
+        margin: 0 0 1.5rem 0;
+        font-size: 0.95rem;
+      }
+
+      .footer-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        ::ng-deep {
+          .p-button {
+            color: #667eea;
+            text-decoration: none;
+
+            &:hover {
+              background: rgba(102, 126, 234, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .header-section {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .charts-section {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+// PrimeNG overrides
+::ng-deep {
+  .p-card {
+    .p-card-body {
+      background: white;
+    }
+  }
+
+  .p-inputtext {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+
+    &:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+  }
+
+  .p-dropdown {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+
+    &:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+  }
+
+  .p-button {
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .p-button-success {
+    background: #10b981;
+    border-color: #10b981;
+
+    &:hover {
+      background: #059669;
+    }
+  }
+
+  .p-button-info {
+    background: #3b82f6;
+    border-color: #3b82f6;
+
+    &:hover {
+      background: #2563eb;
+    }
+  }
+
+  .p-tag {
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .p-divider {
+    margin: 2rem 0;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .p-avatar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+}
